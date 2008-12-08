@@ -110,9 +110,12 @@ __Note:__ You do not need to install anything on the browser to use this plugin.
 
 ---++ Plugin Info
 
-|  Plugin Author: | TWiki:Main.JChristophFuchs & Foswiki:Main.SteffenPoulsen |
-|  Plugin Version: | 14 Apr 2006 (V1.110) |
+|  Plugin Author: | Foswiki:Main.KennethLavrsen & Foswiki:Main.SteffenPoulsen |
+|  Copyright &copy;: | 2006, !JChristophFuchs and !Steffen Poulsen; 2008 Kenneth Lavrsen and Foswiki Contributors | 
+|  License: | GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]]) |
+|  Plugin Version: | 08 Dec 2008  |
 |  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  08 Dec 2008 | Kenneth Lavrsen: Changed the author to myself. !JChristophFuchs is the original author but announced in 2006 that he no longer maintains this plugin. So now I officially take the task as maintainer. Plugin is changed to Foswiki namespace and tested and works under Foswiki 1.0.0. Policy is now feel free to modify but please do not break compatibility. |
 |  14 Apr 2006: | &lt;noautolink&gt; added to default pre/post rendering output of REVCOMMENT tag |
 |  14 Apr 2006: | Minor update for Dakar 4.0.2 |
 |  22 Apr 2005: | Initial version |
@@ -124,6 +127,5 @@ __Note:__ You do not need to install anything on the browser to use this plugin.
 |  Foswiki:Extensions/Benchmark: | %SYSTEMWEB%.GoodStyle nn%, %SYSTEMWEB%.FormattedSearch nn%, %TOPIC% nn% |
 |  Plugin Home: | http://foswiki.org/Extensions/%TOPIC% |
 |  Feedback: | http://foswiki.org/Extensions/%TOPIC%Dev |
-|  Appraisal: | http://foswiki.org/Extensions/%TOPIC%Appraisal |
 
 __Related Topics:__ %SYSTEMWEB%.DefaultPreferences, %USERSWEB%.SitePreferences, [[%SYSTEMWEB%.Plugins][Plugins]]
