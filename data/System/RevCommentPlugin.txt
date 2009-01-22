@@ -113,9 +113,10 @@ __Note:__ You do not need to install anything on the browser to use this plugin.
 |  Plugin Author: | Foswiki:Main.KennethLavrsen & Foswiki:Main.SteffenPoulsen |
 |  Copyright &copy;: | 2006, !JChristophFuchs and !Steffen Poulsen; 2008 Kenneth Lavrsen and Foswiki Contributors | 
 |  License: | GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]]) |
-|  Plugin Version: | 08 Dec 2008  |
+|  Plugin Version: | 22 Jan 2008  |
 |  Change History: | <!-- versions below in reverse order -->&nbsp; |
-|  08 Dec 2008 | Kenneth Lavrsen: Changed the author to myself. !JChristophFuchs is the original author but announced in 2006 that he no longer maintains this plugin. So now I officially take the task as maintainer. Plugin is changed to Foswiki namespace and tested and works under Foswiki 1.0.0. Policy is now feel free to modify but please do not break compatibility. |
+|  22 Jan 2008: | Kenneth Lavrsen - Added the two example images as attachments to the topic so they also get uploaded to foswiki.org. No need to upgrade from 08 Dec 2008 version if you already installed that. |
+|  08 Dec 2008: | Kenneth Lavrsen: Changed the author to myself. !JChristophFuchs is the original author but announced in 2006 that he no longer maintains this plugin. So now I officially take the task as maintainer. Plugin is changed to Foswiki namespace and tested and works under Foswiki 1.0.0. Policy is now feel free to modify but please do not break compatibility. |
 |  14 Apr 2006: | &lt;noautolink&gt; added to default pre/post rendering output of REVCOMMENT tag |
 |  14 Apr 2006: | Minor update for Dakar 4.0.2 |
 |  22 Apr 2005: | Initial version |
@@ -127,3 +128,6 @@ __Note:__ You do not need to install anything on the browser to use this plugin.
 |  Feedback: | http://foswiki.org/Extensions/%TOPIC%Dev |
 
 __Related Topics:__ %SYSTEMWEB%.DefaultPreferences, %USERSWEB%.SitePreferences, [[%SYSTEMWEB%.Plugins][Plugins]]
+
+%META:FILEATTACHMENT{name="ExampleHistory.png" attachment="ExampleHistory.png" attr="h" comment="" date="1232646804" path="ExampleHistory.png" size="25374"   user="ProjectContributor" version="1"}%
+%META:FILEATTACHMENT{name="ExampleWebChanges.png" attachment="ExampleWebChanges.png" attr="h" comment="" date="1232646820" path="ExampleWebChanges.png" size="9532"   user="ProjectContributor" version="1"}%
