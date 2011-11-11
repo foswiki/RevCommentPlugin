@@ -74,7 +74,7 @@ sub initPlugin {
 
     # Need to register meta, Item11249
     if ( defined &Foswiki::Meta::registerMETA ) {
-	%Foswiki::Meta::registerMETA(
+	Foswiki::Meta::registerMETA(
 		'REVCOMMENT', 
 		allow => [qw(comment t minor rev ncomments)]
 		);
