@@ -18,8 +18,11 @@
 # =========================
 package Foswiki::Plugins::RevCommentPlugin;
 use strict;
+use warnings;
 
-use Foswiki::Func;
+use Foswiki::Func    ();
+use Foswiki::Plugins ();
+use Foswiki::Meta    ();
 
 # =========================
 use vars qw(
@@ -67,6 +70,15 @@ sub initPlugin {
 
     $cachedCommentWeb   = '';
     $cachedCommentTopic = '';
+
+
+    # Need to register meta, Item11249
+    if ( defined &Foswiki::Meta::registerMETA ) {
+	%Foswiki::Meta::registerMETA(
+		'REVCOMMENT', 
+		allow => [qw(comment t minor rev ncomments)]
+		);
+	}
 
     # Plugin correctly initialized
     Foswiki::Func::writeDebug(

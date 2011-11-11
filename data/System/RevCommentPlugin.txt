@@ -115,6 +115,7 @@ __Note:__ You do not need to install anything on the browser to use this plugin.
 |  License: | GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]]) |
 |  Plugin Version: | 22 Jan 2009  |
 |  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  11 Nov 2011  | Item11249 - added registerMETA |
 |  22 Jan 2009: | Kenneth Lavrsen - Added the two example images as attachments to the topic so they also get uploaded to foswiki.org. No need to upgrade from 08 Dec 2008 version if you already installed that. |
 |  08 Dec 2008: | Kenneth Lavrsen: Changed the author to myself. !JChristophFuchs is the original author but announced in 2006 that he no longer maintains this plugin. So now I officially take the task as maintainer. Plugin is changed to Foswiki namespace and tested and works under Foswiki 1.0.0. Policy is now feel free to modify but please do not break compatibility. |
 |  14 Apr 2006: | &lt;noautolink&gt; added to default pre/post rendering output of REVCOMMENT tag |
