@@ -1,0 +1,10 @@
+*,v
+*,pfv
+*.gz
+/RevCommentPlugin.md5
+/RevCommentPlugin.sha1
+/RevCommentPlugin.tgz
+/RevCommentPlugin.txt
+/RevCommentPlugin.zip
+/RevCommentPlugin_installer
+/RevCommentPlugin_installer.pl

@@ -1,0 +1,13 @@
+%TMPL:INCLUDE{"edittoolbar"}%
+%{ ################################################################################ }%
+%TMPL:DEF{"bottomtopicactions"}%<div class="natEditBottomBar">
+%IF{ "context RevCommentPluginEnabled" then="%TMPL:P{"revcomment"}%"}%
+<ul>%TMPL:P{"saveorrestorebutton"}%%TMPL:P{"checkpointbutton"}%%TMPL:P{"previewbutton"}%%TMPL:P{"formbutton"}%%TMPL:P{"changeform"}%%TMPL:P{"cancelbutton"}%%TMPL:P{"forcenewrevision"}%</ul>
+%CLEAR%
+</div>
+%TMPL:END%
+%TMPL:DEF{"revcomment"}%
+<div class='revComment'>
+<label for='comment'>Summary of changes</label>
+<input class='foswikiInputField' type='text' style='width:50%' name='comment' id='comment' />
+%POPUPWINDOW{"%SYSTEMWEB%.RevComment" label="%MAKETEXT{"help"}%"}%</div>%TMPL:END%

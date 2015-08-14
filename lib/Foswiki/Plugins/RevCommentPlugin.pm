@@ -1,7 +1,7 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
 # Copyright (C) 2005 by TWiki:Main.JChristophFuchs
-# Copyright (C) 2008 Foswiki Contributors
+# Copyright (C) 2008-2015 Foswiki Contributors
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -34,15 +34,8 @@ use vars qw(
   $commentFromUpload $attachmentComments $cachedCommentWeb $cachedCommentTopic $minorMark
 );
 
-# This should always be $Rev: 9841 $ so that Foswiki can determine the checked-in
-# status of the plugin. It is used by the build automation tools, so
-# you should leave it alone.
-$VERSION = '$Rev: 9841 $';
-
-# This is a free-form string you can use to "name" your own plugin version.
-# It is *not* used by the build automation tools, but is reported as part
-# of the version number in PLUGINDESCRIPTIONS.
-$RELEASE = '22 Jan 2009';
+$VERSION = '2.00';
+$RELEASE = '14 Aug 2015';
 
 $pluginName = 'RevCommentPlugin';
 
@@ -71,10 +64,12 @@ sub initPlugin {
     $cachedCommentWeb   = '';
     $cachedCommentTopic = '';
 
-    # Need to register meta, Item11249
+# Need to register meta, Item11249
+# SMELL: Foswiki 2.0 meta strictly enforces attribut names. This plugin indexes these names
+# with relative comment number:  comment_1, comment_2, etc.  and the META:REVCOMMENT lines are
+# ignored.  Needed to remove the definition:  allow => [qw(comment t minor rev ncomments)] );
     if ( defined &Foswiki::Meta::registerMETA ) {
-        Foswiki::Meta::registerMETA( 'REVCOMMENT',
-            allow => [qw(comment t minor rev ncomments)] );
+        Foswiki::Meta::registerMETA('REVCOMMENT');
     }
 
     # Plugin correctly initialized
