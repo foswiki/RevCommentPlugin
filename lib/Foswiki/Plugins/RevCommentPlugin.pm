@@ -146,9 +146,9 @@ sub beforeSaveHandler {
             rev   => undef,
         };
     }
-    elsif ( $query->param('comment') || $query->param('dontnotify') ) {
-        my $commentFromForm = $query->param('comment') || ' ';
-        my $t               = $query->param('t')       || time();
+    elsif ( $query->param('revcomment') || $query->param('dontnotify') ) {
+        my $commentFromForm = $query->param('revcomment') || ' ';
+        my $t               = $query->param('t')          || time();
 
         $newComment = {
             comment => $commentFromForm,
