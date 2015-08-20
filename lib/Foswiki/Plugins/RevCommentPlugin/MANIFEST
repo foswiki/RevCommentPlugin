@@ -1,6 +1,6 @@
-data/System/RevComment.txt 0775
+data/System/RevCommentHelp.txt 0775
+data/System/VarREVCOMMENT.txt 0775
 data/System/RevCommentPlugin.txt 0775
-data/System/WebChangesWC.txt 0775
 data/System/WebRssBaseWC.txt 0775
 lib/Foswiki/Plugins/RevCommentPlugin.pm 0775
 pub/System/RevCommentPlugin/ExampleHistory.png 0775
@@ -8,3 +8,4 @@ pub/System/RevCommentPlugin/ExampleWebChanges.png 0775
 templates/edit.revcomment.tmpl 0664
 templates/edittoolbar.revcomment.tmpl 0664
 templates/oopshistory.revcomment.tmpl 0664
+templates/search.revcomment.tmpl 0664
