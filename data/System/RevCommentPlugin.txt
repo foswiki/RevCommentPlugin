@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" date="1439692933" format="1.1" version="1.1"}%
+%META:TOPICINFO{author="ProjectContributor" date="1440210322" format="1.1" version="1.1"}%
 ---+!! <nop>%TOPIC%
 
 This plugin allows to enter a short summary of changes made to a topic for a new revision.
@@ -71,18 +71,27 @@ Plugin settings are stored as preferences variables. To reference a plugin setti
 ---++ Plugin Installation Instructions
 %$INSTALL_INSTRUCTIONS%
 
-Note that this extension now ships with 3 templates, and requires a SKIN
-override to incorporate this extension.  For a Foswiki 2.0 system, set the
-SKIN in %USERSWEB%.SitePreferences.  =Set SKIN = revcomment,natedit,pattern=
+Note that this extension now ships with 4 templates, and requires a SKIN
+override to incorporate this extension.  Set the SKIN in %USERSWEB%.SitePreferences.  
+   * For a Foswiki 2.0 system, =Set SKIN = revcomment,natedit,pattern=
+   * For a Foswiki 1.1 system, =Set SKIN = revcom11,pattern=
 
-   $ =templates/edit.revcomment.tmpl=: Adds the =revcomment= parameter to the older Foswiki editor (Plain Text and !TinyMCE.)
-   $ =templates/edittoolbar.revcomment.tmpl=: Adds the =revcomment= parameter to the NatEdit editor.
-   $ =templates/oopshistory.revcomment.tmpl=: Incorporates the revision comments into the topic history.
-   * If you are using other skins than the pattern, you will need to fit these
-     template overrides into your site skin.  These templates
-     add a textfield to the Editor interface:<verbatim>
+   * Foswiki 2.0
+      $ =templates/edit.revcomment.tmpl=: Adds the =revcomment= parameter to the older Foswiki editor (Plain Text and !TinyMCE.)
+      $ =templates/edittoolbar.revcomment.tmpl=: Adds the =revcomment= parameter to the NatEdit editor.
+      $ =templates/oopshistory.revcomment.tmpl=: Incorporates the revision comments into the topic history.
+      $ =templates/search.revcomment.tmpl=: Adds the revision comments to the default search
+
+   * Foswiki 1.1.x compatibility
+      $ =templates/edit.revcom11.tmpl=: Adds the =revcomment= parameter to the older Foswiki editor (Plain Text and !TinyMCE.)
+      $ =templates/edittoolbar.revcom11.tmpl=: Adds the =revcomment= parameter to the NatEdit editor.
+      $ =templates/oopshistory.revcom11.tmpl=: Incorporates the revision comments into the topic history.
+      $ =templates/search.revcom11.tmpl=: Adds the revision comments to the default search
+
+<div class="foswikiHelp"> If you are using other skins than the pattern, you will need to fit these
+template overrides into your site skin.  These templates add a textfield to the Editor interface:<verbatim>
 <input class='foswikiInputField' type='text' style='width:50%' name='revcomment' id='revcomment' />
-</verbatim>
+</verbatim></div>
 
 
    * Test if the installation was successful:
@@ -112,5 +121,5 @@ SKIN in %USERSWEB%.SitePreferences.  =Set SKIN = revcomment,natedit,pattern=
 
 __Related Topics:__ %SYSTEMWEB%.DefaultPreferences, %USERSWEB%.SitePreferences, [[%SYSTEMWEB%.Plugins][Plugins]]
 
-%META:FILEATTACHMENT{name="ExampleHistory.png" attachment="ExampleHistory.png" attr="h" comment="" date="1439692933" size="25374"   user="ProjectContributor" version="1"}%
-%META:FILEATTACHMENT{name="ExampleWebChanges.png" attachment="ExampleWebChanges.png" attr="h" comment="" date="1439692933" size="9532"   user="ProjectContributor" version="1"}%
+%META:FILEATTACHMENT{name="ExampleHistory.png" attachment="ExampleHistory.png" attr="h" comment="" date="1440210322" size="25374"   user="ProjectContributor" version="1"}%
+%META:FILEATTACHMENT{name="ExampleWebChanges.png" attachment="ExampleWebChanges.png" attr="h" comment="" date="1440210322" size="9532"   user="ProjectContributor" version="1"}%

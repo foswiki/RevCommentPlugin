@@ -9,3 +9,7 @@ templates/edit.revcomment.tmpl 0664
 templates/edittoolbar.revcomment.tmpl 0664
 templates/oopshistory.revcomment.tmpl 0664
 templates/search.revcomment.tmpl 0664
+templates/edit.revcom11.tmpl 0664
+templates/edittoolbar.revcom11.tmpl 0664
+templates/oopshistory.revcom11.tmpl 0664
+templates/search.revcom11.tmpl 0664

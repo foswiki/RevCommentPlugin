@@ -1,5 +1,5 @@
 %TMPL:INCLUDE{"edittoolbar"}%
-%{ ################################################################################ }%
+%{ ### Redefines the edittoolbar.pattern.tmpl for Foswiki 2.0, changing the comment field to revcomment ### }%
 %TMPL:DEF{"bottomtopicactions"}%<div class="natEditBottomBar">
 %IF{ "context RevCommentPluginEnabled" then="%TMPL:P{"revcomment"}%"}%
 <ul>%TMPL:P{"saveorrestorebutton"}%%TMPL:P{"checkpointbutton"}%%TMPL:P{"previewbutton"}%%TMPL:P{"formbutton"}%%TMPL:P{"changeform"}%%TMPL:P{"cancelbutton"}%%TMPL:P{"forcenewrevision"}%</ul>

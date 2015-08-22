@@ -1,5 +1,6 @@
 %TMPL:INCLUDE{"oopshistory"}%
-%TMPL:DEF{"historytable"}%%TMPL:P{context="RevCommentPluginEnabled" then="historytable_rcp_enabled" else="historytable"}%%TMPL:END%
+%{ SMELL: historytable_rcp_disabled defined in oopshistory.tmpl. Foswiki 2.0.2 renames it. }%
+%TMPL:DEF{"historytable"}%%TMPL:P{context="RevCommentPluginEnabled" then="historytable_rcp_enabled" else="historytable_rcp_disabled"}%%TMPL:END%
 %TMPL:DEF{"historytable_rcp_enabled"}%<table class="foswikiTable historySelectTable" summary="%MAKETEXT{"Topic history"}%">
 <tr>
 <th colspan="3">%MAKETEXT{"Revision"}%</th>
