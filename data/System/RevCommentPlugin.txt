@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" date="1440210322" format="1.1" version="1.1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1440378716" format="1.1"  version="1"}%
 ---+!! <nop>%TOPIC%
 
 This plugin allows to enter a short summary of changes made to a topic for a new revision.
@@ -41,8 +41,8 @@ if the list of comments is not empty.)
 
    * %<nop>REVCOMMENT% shows the comments for the current revision.
 
-   * Example <nop>WebChanges: <br />
-     <img src="%ATTACHURLPATH%/ExampleWebChanges.png" alt="Screenshot: Example output of !WebChanges"  />
+   * Example search results: <br />
+     <img src="%ATTACHURLPATH%/ExampleWebChanges.png" alt="ExampleWebChanges.png" width='718' height='236' />
 
 ---
 
@@ -50,7 +50,7 @@ if the list of comments is not empty.)
      the history of a topic may look like this:
 
    * Example History: <br />
-     <img src="%ATTACHURLPATH%/ExampleHistory.png" alt="ExampleHistory.png"  />
+     <img src="%ATTACHURLPATH%/ExampleHistory.png" alt="ExampleHistory.png" width='646' height='156' />
 
 ---++ Plugin Settings
 
@@ -59,39 +59,40 @@ Plugin settings are stored as preferences variables. To reference a plugin setti
    * One line description, is shown in the %SYSTEMWEB%.TextFormattingRules topic:
       * Set SHORTDESCRIPTION = Allows a short summary of changes to be entered for a new revision.
 
-   * Debug plugin: (See output in =data/debug.txt=)
+   * Debug plugin: (See output in =working/logs/debug.log=)
       * Set DEBUG = 0
 
    * List also new or updated attachments:
       * Set ATTACHMENT_COMMENTS = 1
 
-   * Store comments as RCS log message (not recommended yet)
-      * Set USE_RCS = 0
-
----++ Plugin Installation Instructions
-%$INSTALL_INSTRUCTIONS%
-
 Note that this extension now ships with 4 templates, and requires a SKIN
-override to incorporate this extension.  Set the SKIN in %USERSWEB%.SitePreferences.  
+override to incorporate this extension.  Set the SKIN in %USERSWEB%.SitePreferences.
    * For a Foswiki 2.0 system, =Set SKIN = revcomment,natedit,pattern=
    * For a Foswiki 1.1 system, =Set SKIN = revcom11,pattern=
 
-   * Foswiki 2.0
-      $ =templates/edit.revcomment.tmpl=: Adds the =revcomment= parameter to the older Foswiki editor (Plain Text and !TinyMCE.)
-      $ =templates/edittoolbar.revcomment.tmpl=: Adds the =revcomment= parameter to the NatEdit editor.
-      $ =templates/oopshistory.revcomment.tmpl=: Incorporates the revision comments into the topic history.
-      $ =templates/search.revcomment.tmpl=: Adds the revision comments to the default search
+---++ Customization
 
-   * Foswiki 1.1.x compatibility
-      $ =templates/edit.revcom11.tmpl=: Adds the =revcomment= parameter to the older Foswiki editor (Plain Text and !TinyMCE.)
-      $ =templates/edittoolbar.revcom11.tmpl=: Adds the =revcomment= parameter to the NatEdit editor.
-      $ =templates/oopshistory.revcom11.tmpl=: Incorporates the revision comments into the topic history.
-      $ =templates/search.revcom11.tmpl=: Adds the revision comments to the default search
+---+++ Templates
+The comment input field and displayed comments are added via skin template overrides.
+
+   * Either =revcomment= or =revcom11= substituted for =&lt;skin&gt;=:
+      $ =templates/edit.&lt;skin&gt;.tmpl=: Adds the =revcomment= parameter to the older Foswiki editor (Plain Text and !TinyMCE.)
+      $ =templates/edittoolbar.&lt;skin&gt;.tmpl=: Adds the =revcomment= parameter to the NatEdit editor.
+      $ =templates/oopshistory.&lt;skin&gt;.tmpl=: Incorporates the revision comments into the topic history displayed by HistoryPlugin.
+      $ =templates/search.&lt;skin&gt;.tmpl=: Adds the revision comments to the default search
 
 <div class="foswikiHelp"> If you are using other skins than the pattern, you will need to fit these
 template overrides into your site skin.  These templates add a textfield to the Editor interface:<verbatim>
 <input class='foswikiInputField' type='text' style='width:50%' name='revcomment' id='revcomment' />
 </verbatim></div>
+
+---+++ CSS
+
+Most of the CSS used to display comments is already embedded in the PatternSkin =styles.css= and =colors.css=  A small amount of CSS is also
+contained in-line in the =oopshistory= template.
+
+---++ Plugin Installation Instructions
+%$INSTALL_INSTRUCTIONS%
 
 
    * Test if the installation was successful:
@@ -99,9 +100,6 @@ template overrides into your site skin.  These templates add a textfield to the 
       * Create a topic in your %SANDBOXWEB% web. Add a %<nop>REVCOMMENT% macro to the topic, and save it with a comment.
       * If you have also the [[Foswiki:Extensions.HistoryPlugin][HistoryPlugin]] installed,
         view the history of the topic you just created. It should contain the comment.
-
-   * If [[Foswiki:Extensions.HistoryPlugin][HistoryPlugin]] is installed, the template =oopshistory.tmpl= from this plugin is automatically expanded with revision comments once this plugin is installed
-
 
 ---++ Plugin Info
 
@@ -121,5 +119,5 @@ template overrides into your site skin.  These templates add a textfield to the 
 
 __Related Topics:__ %SYSTEMWEB%.DefaultPreferences, %USERSWEB%.SitePreferences, [[%SYSTEMWEB%.Plugins][Plugins]]
 
-%META:FILEATTACHMENT{name="ExampleHistory.png" attachment="ExampleHistory.png" attr="h" comment="" date="1440210322" size="25374"   user="ProjectContributor" version="1"}%
-%META:FILEATTACHMENT{name="ExampleWebChanges.png" attachment="ExampleWebChanges.png" attr="h" comment="" date="1440210322" size="9532"   user="ProjectContributor" version="1"}%
+%META:FILEATTACHMENT{name="ExampleHistory.png" attachment="ExampleHistory.png" attr="h" comment="" date="1440378716" size="15714" user="ProjectContributor" version="1"}%
+%META:FILEATTACHMENT{name="ExampleWebChanges.png" attachment="ExampleWebChanges.png" attr="h" comment="" date="1440378716" size="30666" user="ProjectContributor" version="1"}%
