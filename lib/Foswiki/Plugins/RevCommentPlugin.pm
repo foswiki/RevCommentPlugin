@@ -26,16 +26,17 @@ use Foswiki::Meta    ();
 
 # =========================
 use vars qw(
-  $web $topic $user $installWeb $VERSION $RELEASE $pluginName
-  $debug
+  $web $topic $user $installWeb $pluginName $debug
 );
 
 use vars qw(
   $commentFromUpload $attachmentComments $cachedCommentWeb $cachedCommentTopic $minorMark
 );
 
-$VERSION = '2.00';
-$RELEASE = '14 Aug 2015';
+our $VERSION = '2.00';
+our $RELEASE = '14 Aug 2015';
+our $SHORTDESCRIPTION =
+  'Allows a short summary of changes to be entered for a new revision.';
 
 $pluginName = 'RevCommentPlugin';
 

@@ -1,7 +1,10 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1440378716" format="1.1"  version="1"}%
+%META:TOPICINFO{author="BaseUserMapping_333" comment="reprev" date="1440555092" format="1.1" reprev="2" version="4"}%
+<!--
+One line description, required for extensions repository catalog.
+   * Set SHORTDESCRIPTION = %$SHORTDESCRIPTION%
+-->
 ---+!! <nop>%TOPIC%
-
-This plugin allows to enter a short summary of changes made to a topic for a new revision.
+This plugin allows entry of a short summary of changes made to a topic for a new revision.
 This summary can be displayed e.g. in a history page of the topic or on the !WebChanges page
 of a web. Changes may also be marked as "minor" by using the "Quiet save" button.
 
@@ -15,34 +18,26 @@ of  the preference variable ATTACHMENT_COMMENTS (see below).
 
 %TOC%
 
----++ Syntax Rules
+---++ Syntax - Show previous comments
 
----+++ Showing existing comments
-   * %<nop>REVCOMMENT{parameters}%
-   * Parameters:%BR%
-| *Name* | *Description* | *Default* |
-| web    | Web where topic exists  | current web  |
-| topic  | Name of topic           | current topic  |
-| rev    | Revision                | latest revision |
-| delimiter | Delimiter between 2 comments for the same revision | &lt;/li&gt;&lt;li&gt;  |
-| pre    | Text before the first comment | &lt;ul&gt;&lt;li&gt;  |
-| post   | Text after the last comment | &lt;/li&gt;&lt;/ul&gt;  |
-| minor  | Text to print for a minor change | _(minor)_  |
-(The text for the _pre_ and _post_ parameters will only be printed
-if the list of comments is not empty.)
-   * For your convenience, you can use [] instead of {} and '' instead of "
-     inside other parameters.
+#StandardAttrs
+Write =%<nop>REVCOMMENT{<i>attributes</i>}%= anywhere in a topic.
+%INCLUDE{"VarREVCOMMENT" section="revcomment_attributes"}%
 
----+++ Entering new comments
-   * Add a text input field named =comment= to the edit and preview templates.
-     (See e.g. the attached templates for the pattern and classic skin)
+---++ Entering new comments
+
+If the skin setting is enabled, a text input field named =comment= will be
+added to the Edit screens.  Enter your comment when you save your edits, and
+it will be saved in the topic.
 
 ---++ Examples
 
    * %<nop>REVCOMMENT% shows the comments for the current revision.
 
+if you have RevCommentPlugin enabled, you should see a comment here: %REVCOMMENT%
+
    * Example search results: <br />
-     <img src="%ATTACHURLPATH%/ExampleWebChanges.png" alt="ExampleWebChanges.png" width='718' height='236' />
+     <img alt='ExampleWebChanges.png' height='236' src='%ATTACHURLPATH%/ExampleWebChanges.png' width='718' />
 
 ---
 
@@ -50,14 +45,11 @@ if the list of comments is not empty.)
      the history of a topic may look like this:
 
    * Example History: <br />
-     <img src="%ATTACHURLPATH%/ExampleHistory.png" alt="ExampleHistory.png" width='646' height='156' />
+     <img alt='ExampleHistory.png' height='156' src='%ATTACHURLPATH%/ExampleHistory.png' width='646' />
 
 ---++ Plugin Settings
 
 Plugin settings are stored as preferences variables. To reference a plugin setting write ==%<nop>&lt;plugin&gt;_&lt;setting&gt;%==, i.e. ==%<nop>REVCOMMENTPLUGIN_SHORTDESCRIPTION%==
-
-   * One line description, is shown in the %SYSTEMWEB%.TextFormattingRules topic:
-      * Set SHORTDESCRIPTION = Allows a short summary of changes to be entered for a new revision.
 
    * Debug plugin: (See output in =working/logs/debug.log=)
       * Set DEBUG = 0
@@ -73,6 +65,7 @@ override to incorporate this extension.  Set the SKIN in %USERSWEB%.SitePreferen
 ---++ Customization
 
 ---+++ Templates
+
 The comment input field and displayed comments are added via skin template overrides.
 
    * Either =revcomment= or =revcom11= substituted for =&lt;skin&gt;=:
@@ -81,10 +74,9 @@ The comment input field and displayed comments are added via skin template overr
       $ =templates/oopshistory.&lt;skin&gt;.tmpl=: Incorporates the revision comments into the topic history displayed by HistoryPlugin.
       $ =templates/search.&lt;skin&gt;.tmpl=: Adds the revision comments to the default search
 
-<div class="foswikiHelp"> If you are using other skins than the pattern, you will need to fit these
-template overrides into your site skin.  These templates add a textfield to the Editor interface:<verbatim>
-<input class='foswikiInputField' type='text' style='width:50%' name='revcomment' id='revcomment' />
-</verbatim></div>
+<div class='foswikiHelp'>If you are using other skins than the pattern, you will need to fit these template overrides into your site's skin.
+These templates add a textfield to the Editor interface: <verbatim>
+<input class='foswikiInputField' type='text' style='width:50%' name='revcomment' id='revcomment' /></verbatim> </div>
 
 ---+++ CSS
 
@@ -92,8 +84,8 @@ Most of the CSS used to display comments is already embedded in the PatternSkin 
 contained in-line in the =oopshistory= template.
 
 ---++ Plugin Installation Instructions
-%$INSTALL_INSTRUCTIONS%
 
+%$INSTALL_INSTRUCTIONS%
 
    * Test if the installation was successful:
       * Add the SKIN setting to enable the template modifications.
@@ -106,7 +98,7 @@ contained in-line in the =oopshistory= template.
 |  Plugin Author: | Foswiki:Main.KennethLavrsen & Foswiki:Main.SteffenPoulsen |
 |  Copyright &copy;: | 2006, !JChristophFuchs and !Steffen Poulsen; 2008-2015 Kenneth Lavrsen and Foswiki Contributors |
 |  License: | GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]]) |
-|  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  Change History: |  |
 |  15 Aug 2015 (2.0) | Foswikitask:Item11068: RevCommentplugin conflicts with CommentPlugin<br/>\
                   Foswikitask:Item13619: Add compatibility for Foswiki 2.0<br/>\
                   Foswikitask:Item12880: Preserve rev-comment input across preview |
@@ -116,8 +108,8 @@ contained in-line in the =oopshistory= template.
 |  14 Apr 2006: | &lt;noautolink&gt; added to default pre/post rendering output of REVCOMMENT tag |
 |  14 Apr 2006: | Minor update for Dakar 4.0.2 |
 |  22 Apr 2005: | Initial version |
-
 __Related Topics:__ %SYSTEMWEB%.DefaultPreferences, %USERSWEB%.SitePreferences, [[%SYSTEMWEB%.Plugins][Plugins]]
 
 %META:FILEATTACHMENT{name="ExampleHistory.png" attachment="ExampleHistory.png" attr="h" comment="" date="1440378716" size="15714" user="ProjectContributor" version="1"}%
 %META:FILEATTACHMENT{name="ExampleWebChanges.png" attachment="ExampleWebChanges.png" attr="h" comment="" date="1440378716" size="30666" user="ProjectContributor" version="1"}%
+%META:REVCOMMENT{comment_1="New version 2.0 of this extension." minor_1="" ncomments="1" rev_1="" t_1="1440555092"}%

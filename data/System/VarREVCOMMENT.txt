@@ -1,9 +1,10 @@
 %META:TOPICINFO{author="ProjectContributor" date="1434650530" format="1.1" version="1"}%
 %META:TOPICPARENT{name="Macros"}%
 ---+ REVCOMMENT -- Display the revision comments for a topic..
+%STARTSECTION{"revcomment_attributes"}%
 ---++ Parameters
    * The following standard attributes are recognized
-     %TABLE{sort="off"}%
+%TABLE{sort="off"}%
 | *Name* | *Description* | *Default* |
 | web    | Web where topic exists  | current web  |
 | topic  | Name of topic           | current topic  |
@@ -15,6 +16,7 @@
 (The text for the _pre_ and _post_ parameters will only be printed if the list of comments is not empty.)
    * For your convenience, you can use [] instead of {} and '' instead of " 
      inside other parameters.
+%ENDSECTION{"revcomment_attributes"}%
 ---++ Examples
    * A =%<nop>REVCOMMENT%= without parameters shows the Revision comments for the latest topic revision.
 %STOPINCLUDE%
