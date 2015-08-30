@@ -34,7 +34,7 @@ use vars qw(
 );
 
 our $VERSION = '2.00';
-our $RELEASE = '14 Aug 2015';
+our $RELEASE = '29 Aug 2015';
 our $SHORTDESCRIPTION =
   'Allows a short summary of changes to be entered for a new revision.';
 

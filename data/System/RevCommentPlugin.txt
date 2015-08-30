@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" date="1440556086" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" date="1440893548" format="1.1"  version="1"}%
 <!--
 One line description, required for extensions repository catalog.
    * Set SHORTDESCRIPTION = %$SHORTDESCRIPTION%
@@ -70,7 +70,7 @@ The comment input field and displayed comments are added via skin template overr
 
    * Either =revcomment= or =revcom11= substituted for =&lt;skin&gt;=:
       $ =templates/edit.&lt;skin&gt;.tmpl=: Adds the =revcomment= parameter to the older Foswiki editor (Plain Text and !TinyMCE.)
-      $ =templates/edittoolbar.&lt;skin&gt;.tmpl=: Adds the =revcomment= parameter to the NatEdit editor.
+      $ =templates/edittoolbar.&lt;skin&gt;.tmpl=: Adds the =revcomment= parameter to the !NatEdit editor.
       $ =templates/oopshistory.&lt;skin&gt;.tmpl=: Incorporates the revision comments into the topic history displayed by HistoryPlugin.
       $ =templates/search.&lt;skin&gt;.tmpl=: Adds the revision comments to the default search
 
@@ -110,6 +110,6 @@ contained in-line in the =oopshistory= template.
 |  22 Apr 2005: | Initial version |
 __Related Topics:__ %SYSTEMWEB%.DefaultPreferences, %USERSWEB%.SitePreferences, [[%SYSTEMWEB%.Plugins][Plugins]]
 
-%META:FILEATTACHMENT{name="ExampleHistory.png" attachment="ExampleHistory.png" attr="h" comment="" date="1440556086" size="15714" user="ProjectContributor" version="1"}%
-%META:FILEATTACHMENT{name="ExampleWebChanges.png" attachment="ExampleWebChanges.png" attr="h" comment="" date="1440556086" size="30666" user="ProjectContributor" version="1"}%
+%META:FILEATTACHMENT{name="ExampleHistory.png" attachment="ExampleHistory.png" attr="h" comment="" date="1440893548" size="15714" user="ProjectContributor" version="1"}%
+%META:FILEATTACHMENT{name="ExampleWebChanges.png" attachment="ExampleWebChanges.png" attr="h" comment="" date="1440893548" size="30666" user="ProjectContributor" version="1"}%
 %META:REVCOMMENT{comment_1="New version 2.0 of this extension." minor_1="" ncomments="1" rev_1="" t_1="1440555092"}%
