@@ -33,8 +33,8 @@ use vars qw(
   $commentFromUpload $attachmentComments $cachedCommentWeb $cachedCommentTopic $minorMark
 );
 
-our $VERSION = '2.00';
-our $RELEASE = '29 Aug 2015';
+our $VERSION = '2.01';
+our $RELEASE = '01 Sep 2015';
 our $SHORTDESCRIPTION =
   'Allows a short summary of changes to be entered for a new revision.';
 
@@ -94,7 +94,7 @@ sub commonTagsHandler {
     # Called by Foswiki::handleCommonTags, after %INCLUDE:"..."%
 
     $_[0] =~ s/%REVCOMMENT%/&handleRevComment()/ge;
-    $_[0] =~ s/%REVCOMMENT{(.*?)}%/&handleRevComment($1)/ge;
+    $_[0] =~ s/%REVCOMMENT\{(.*?)\}%/&handleRevComment($1)/ge;
     $_[0] =~ s/%REVCOMMENT\[(.*?)\]%/&handleRevComment($1)/ge;
 }
 

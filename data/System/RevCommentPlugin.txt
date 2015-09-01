@@ -99,7 +99,8 @@ contained in-line in the =oopshistory= template.
 |  Copyright &copy;: | 2006, !JChristophFuchs and !Steffen Poulsen; 2008-2015 Kenneth Lavrsen and Foswiki Contributors |
 |  License: | GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]]) |
 |  Change History: |  |
-|  15 Aug 2015 (2.0) | Foswikitask:Item11068: RevCommentplugin conflicts with CommentPlugin<br/>\
+|  01 Sep 2015 (2.01) | Foswikitask:Item13657: Regex issues on perl 5.22 |
+|  15 Aug 2015 (2.00) | Foswikitask:Item11068: RevCommentplugin conflicts with CommentPlugin<br/>\
                   Foswikitask:Item13619: Add compatibility for Foswiki 2.0<br/>\
                   Foswikitask:Item12880: Preserve rev-comment input across preview |
 |  11 Nov 2011  | Item11249 - added registerMETA |
