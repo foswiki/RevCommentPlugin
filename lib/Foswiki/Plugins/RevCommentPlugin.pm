@@ -1,7 +1,7 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
 # Copyright (C) 2005 by TWiki:Main.JChristophFuchs
-# Copyright (C) 2008-2015 Foswiki Contributors
+# Copyright (C) 2008-2020 Foswiki Contributors
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -17,269 +17,151 @@
 
 # =========================
 package Foswiki::Plugins::RevCommentPlugin;
+
+=begin TML
+
+---+ package Foswiki::Plugins::RevCommentPlugin
+
+base class to hook into the foswiki core
+
+=cut
+
 use strict;
 use warnings;
 
 use Foswiki::Func    ();
 use Foswiki::Plugins ();
-use Foswiki::Meta    ();
 
-# =========================
-use vars qw(
-  $web $topic $user $installWeb $pluginName $debug
-);
-
-use vars qw(
-  $commentFromUpload $attachmentComments $cachedCommentWeb $cachedCommentTopic $minorMark
-);
-
-our $VERSION = '2.01';
-our $RELEASE = '01 Sep 2015';
+our $VERSION = '3.00';
+our $RELEASE = '20 Oct 2020';
 our $SHORTDESCRIPTION =
-  'Allows a short summary of changes to be entered for a new revision.';
+  'Allows a short summary of changes to be entered for a new revision';
+our $NO_PREFS_IN_TOPIC = 1;
+our $core;
 
-$pluginName = 'RevCommentPlugin';
+=begin TML
 
-$minorMark = '%MINOR%';
+---++ initPlugin($topic, $web, $user) -> $boolean
 
-# =========================
+initialize the plugin, automatically called during the core initialization process
+
+=cut
+
 sub initPlugin {
-    ( $topic, $web, $user, $installWeb ) = @_;
 
-    # check for Plugins.pm versions
-    if ( $Foswiki::Plugins::VERSION < 1.021 ) {
-        Foswiki::Func::writeWarning(
-            "Version mismatch between $pluginName and Plugins.pm");
-        return 0;
-    }
-
-    $commentFromUpload = undef;
-
-    # Get plugin debug flag
-    $debug = Foswiki::Func::getPluginPreferencesFlag("DEBUG");
-
- # Get plugin preferences, the variable defined by:          * Set EXAMPLE = ...
-    $attachmentComments =
-      Foswiki::Func::getPluginPreferencesValue("ATTACHMENT_COMMENTS") || 1;
-
-    $cachedCommentWeb   = '';
-    $cachedCommentTopic = '';
-
-# Need to register meta, Item11249
-# SMELL: Foswiki 2.0 meta strictly enforces attribut names. This plugin indexes these names
-# with relative comment number:  comment_1, comment_2, etc.  and the META:REVCOMMENT lines are
-# ignored.  Needed to remove the definition:  allow => [qw(comment t minor rev ncomments)] );
     if ( defined &Foswiki::Meta::registerMETA ) {
         Foswiki::Meta::registerMETA('REVCOMMENT');
     }
 
-    # Plugin correctly initialized
-    Foswiki::Func::writeDebug(
-        "- Foswiki::Plugins::${pluginName}::initPlugin( $web.$topic ) is OK")
-      if $debug;
-    Foswiki::Func::writeDebug(
-        "- --- attachmentComments = " . $attachmentComments )
-      if $debug;
+    Foswiki::Func::registerTagHandler(
+        'REVCOMMENT',
+        sub {
+            return getCore(shift)->handleRevComment(@_);
+        }
+    );
+
     return 1;
 }
 
-sub commonTagsHandler {
-### my ( $text, $topic, $web ) = @_;   # do not uncomment, use $_[0], $_[1]... instead
+=begin TML
 
-    Foswiki::Func::writeDebug(
-        "- ${pluginName}::commonTagsHandler( $_[2].$_[1] )")
-      if $debug;
+---++ finisPlugin()
 
-    # This is the place to define customized tags and variables
-    # Called by Foswiki::handleCommonTags, after %INCLUDE:"..."%
+clean up after session has finished
 
-    $_[0] =~ s/%REVCOMMENT%/&handleRevComment()/ge;
-    $_[0] =~ s/%REVCOMMENT\{(.*?)\}%/&handleRevComment($1)/ge;
-    $_[0] =~ s/%REVCOMMENT\[(.*?)\]%/&handleRevComment($1)/ge;
+=cut
+
+sub finishPlugin {
+    undef $core;
 }
+
+=begin TML
+
+---++ getCore()
+
+get core of this plugin
+
+=cut
+
+sub getCore {
+    my $session = shift;
+
+    unless ( defined $core ) {
+        require Foswiki::Plugins::RevCommentPlugin::Core;
+
+        $session ||= $Foswiki::Plugins::SESSION;
+        $core = Foswiki::Plugins::RevCommentPlugin::Core->new($session);
+    }
+
+    return $core;
+}
+
+=begin TML
+
+---++ beforeSaveHandler($text, $topic, $web, $meta )
+
+called before a topic is saved to the store
+
+=cut
 
 sub beforeSaveHandler {
-### my ( $text, $topic, $web, $meta ) = @_;   # do not uncomment, use $_[0], $_[1]... instead
     my ( $topic, $web, $meta ) = @_[ 1 .. 3 ];
 
-    Foswiki::Func::writeDebug(
-        "- ${pluginName}::beforeSaveHandler( $_[2].$_[1] )")
-      if $debug;
-
-# This handler is called by Foswiki::Store::saveTopic just before the save action.
-# New hook in Foswiki::Plugins $VERSION = '1.010'
-
-    my $query = Foswiki::Func::getCgiQuery();
-
-    # Get current revision
-    my ( $date, $user, $currev ) =
-      Foswiki::Func::getRevisionInfo( $_[2], $_[1] );
-    $currev ||= 0;
-
-    my @comments = _extractComments($meta);
-
-    # Set correct rev of comment
-    foreach my $comment (@comments) {
-        $comment->{rev} = $currev unless $comment->{rev} =~ /\d+/;
-    }
-
-    # Delete old comments
-    @comments = grep { $_->{rev} >= $currev } @comments;
-
-    # Check for new comments
-    my $newComment;
-    if ($commentFromUpload) {    # File upload
-        $newComment = {
-            comment => $commentFromUpload,
-            t       => 'Upload' . time(),
-            minor   => 0,
-            rev     => undef,
-        };
-    }
-    elsif ($attachmentComments
-        && $query->url( -relative ) =~ /upload/ )
-    {                            # Attachment changed
-        $newComment = {
-            comment => 'Changed properties for attachment !'
-              . $query->param('filename'),
-            t     => 'PropChanged' . time(),
-            minor => 0,
-            rev   => undef,
-        };
-    }
-    elsif ( $query->param('revcomment') || $query->param('dontnotify') ) {
-        my $commentFromForm = $query->param('revcomment') || ' ';
-        my $t               = $query->param('t')          || time();
-
-        $newComment = {
-            comment => $commentFromForm,
-            t       => $t,
-            minor   => defined $query->param('dontnotify'),
-            rev     => undef,
-        };
-    }
-
-    if (   ( $newComment->{comment} || '' ) =~ /\S/
-        || ( $newComment->{minor} && !@comments ) )
-    {
-        push @comments, $newComment;
-    }
-    $meta->remove('REVCOMMENT');
-    _putComments( $meta, @comments );
+    return getCore()->beforeSaveHandler( $web, $topic, $meta );
 }
 
-sub beforeAttachmentSaveHandler {
-    Foswiki::Func::writeDebug(
-        "- ${pluginName}::beforeAttachmentSaveHandler( $_[2].$_[1] )")
-      if $debug;
+=begin TML
 
-    return unless $attachmentComments;
-    Foswiki::Func::writeDebug("--- still here") if $debug;
+---++ beforeUploadHandler(\%attrHash, $meta )
 
-    my $query = Foswiki::Func::getCgiQuery();
-    if ( defined( $query->param('filename') )
-        && $query->param('filename') eq $_[0]->{attachment} )
-    {
+called before an attachment is uploaded or changed
 
-        $commentFromUpload = 'Updated attachment !' . $_[0]->{attachment};
-    }
-    else {
-        $commentFromUpload = 'Attached file !' . $_[0]->{attachment};
-    }
+=cut
+
+sub beforeUploadHandler {
+    return getCore()->beforeUploadHandler(@_);
 }
 
-# =========================
+=begin TML
 
-sub _extractComments {
+---++ afterRenameHandler( $oldWeb, $oldTopic, $oldAttachment, $newWeb, $newTopic, $newAttachment )
 
-    my $meta     = shift;
-    my @comments = ();
+called when a topic or attachment has been renamed
 
-    if ( my $code = $meta->get('REVCOMMENT') ) {
-        for ( my $i = 1 ; $i <= $code->{ncomments} ; ++$i ) {
-            push @comments,
-              {
-                minor   => $code->{ 'minor_' . $i },
-                comment => $code->{ 'comment_' . $i },
-                t       => $code->{ 't_' . $i },
-                rev     => $code->{ 'rev_' . $i },
-              };
-        }
-    }
+=cut
 
-    return @comments;
+sub afterRenameHandler {
+    return getCore()->afterRenameHandler(@_);
 }
 
-sub _putComments {
+=begin TML
 
-    my $meta     = shift;
-    my @comments = @_;
-    my %args     = ( ncomments => scalar @comments, );
+---++ setComment($commentOrObj) -> $hash
 
-    for ( my $i = 1 ; $i <= scalar @comments ; ++$i ) {
-        $args{ 'comment_' . $i } = $comments[ $i - 1 ]->{comment};
-        $args{ 't_' . $i }       = $comments[ $i - 1 ]->{t};
-        $args{ 'minor_' . $i }   = $comments[ $i - 1 ]->{minor};
-        $args{ 'rev_' . $i }     = $comments[ $i - 1 ]->{rev};
-    }
+public api to register a revision comment for the next save operation
 
-    $meta->put( 'REVCOMMENT', \%args );
-}
+example:
 
-sub handleRevComment {
+<verbatim>
+my $comment = Foswiki::Plugins::setComment({
+                 text => "revision message",
+                 minor => 0 / 1, # optional 
+              });
+</verbatim>
 
-    Foswiki::Func::writeDebug(
-        "- Foswiki::Plugins::${pluginName}::handleRevComments: Args=>$_[0]<\n")
-      if $debug;
-    my $params = $_[0] || '';
+<verbatim>
+my $comment = Foswiki::Plugins::setComment("revision message");
+</verbatim>
 
-# SMELL: this "convenience" should probably be removed; you can \" in Attributes
-    $params =~ s/''/"/g;
+The =$comment= return value is the object being used in the final
+store procedure creating the revision comment. It will be invalidated
+once the save handler have been executed. So don't keep hold of them
+for too long.
 
-    my %params = Foswiki::Func::extractParameters($params);
+=cut
 
-    my $web   = $params{web}   || $web;
-    my $topic = $params{topic} || $topic;
-    my $rev =
-         $params{rev}
-      || $params{_DEFAULT}
-      || ( Foswiki::Func::getRevisionInfo( $web, $topic ) )[2];
-    $rev =~ s/^1\.//;
-    my $delimiter = $params{delimiter};
-    $delimiter = '</li><li style="margin-left:-1em;">'
-      unless defined($delimiter);
-    $delimiter =~ s/\\n/\n/g;
-    $delimiter =~ s/\\t/\t/g;
-    my $pre = $params{pre};
-    $pre = '<noautolink><ul><li style="margin-left:-1em;">'
-      unless defined($pre);
-    my $post = $params{post};
-    $post = '</li></ul></noautolink>' unless defined($post);
-    my $minor = $params{minor};
-    $minor = '<i>(minor)</i> ' unless defined($minor);
-
-    unless ( Foswiki::Func::topicExists( $web, $topic ) ) {
-        return "Topic $web.$topic does not exist";
-    }
-    my @comments;
-
-# SMELL: doesn't respect access permissions (too bad there isn't a version that does, like readTopic() does...)
-    my ( $meta, undef ) = Foswiki::Func::readTopic( $web, $topic, $rev );
-
-    @comments = _extractComments($meta);
-    foreach my $comment (@comments) {
-        $comment->{rev} = $rev unless $comment->{rev} =~ /\d+/;
-    }
-    @comments = grep { $_->{rev} == $rev } @comments;
-    map { $_->{comment} = $minorMark . $_->{comment} if $_->{minor} } @comments;
-    @comments = map { $_->{comment} } @comments;
-
-    my $text =
-      scalar @comments > 0
-      ? $pre . join( $delimiter, @comments ) . $post
-      : '';
-    $text =~ s/$minorMark/$minor/g;
-    return $text;
+sub setComment {
+    return getCore()->setComment(@_);
 }
 
 1;

@@ -1,7 +1,4 @@
-#!/usr/bin/perl -w
-#
-# Build for RevCommentPlugin
-#
+#!/usr/bin/env perl
 BEGIN {
     foreach my $pc ( split( /:/, $ENV{FOSWIKI_LIBS} ) ) {
         unshift @INC, $pc;
@@ -11,7 +8,7 @@ BEGIN {
 use Foswiki::Contrib::Build;
 
 # Create the build object
-$build = new Foswiki::Contrib::Build('RevCommentPlugin');
+$build = new Foswiki::Contrib::Build("RevCommentPlugin");
 
 # Build the target on the command line, or the default target
 $build->build( $build->{target} );

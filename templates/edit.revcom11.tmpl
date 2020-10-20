@@ -1,4 +1,8 @@
 %TMPL:INCLUDE{"edit"}%
 %{ ### Redefines the edit.pattern.tmpl for Foswiki 1.1.x, changing the comment field to revcomment ### }%
-%TMPL:DEF{"revCommentPluginOptions"}%%IF{ "context RevCommentPluginEnabled" then="<div class='revComment'><label for='revcomment'>Summary of changes</label> <input class='foswikiInputField' type='text' style='width:50%' name='revcomment' id='revcomment' /> %POPUPWINDOW{"%SYSTEMWEB%.RevComment" label="%MAKETEXT{"help"}%"}%</div>" else=""}%%TMPL:END%
-%TMPL:DEF{"topicinfo"}%%TMPL:P{"revCommentPluginOptions"}%%TMPL:P{"saveoptions"}%<div class="patternTopicActions foswikiFormStep"><div class="patternActionButtons">%TMPL:P{"action_buttons"}%<div class="foswikiClear"></div></div></div>%TMPL:END%
+%TMPL:DEF{"revcomment"}%<div class='revComment'>
+  <label for='revcomment'>%MAKETEXT{"Summary of changes"}%:</label> 
+  <input class='foswikiInputField' type='text' size="80" name='revcomment' id='revcomment' /> 
+  %POPUPWINDOW{"%SYSTEMWEB%.RevComment" label="%MAKETEXT{"help"}%"}%
+</div>%TMPL:END%
+%TMPL:DEF{"topicinfo"}%%TMPL:P{context="RevCommentPluginEnabled" then="revcomment"}%%TMPL:P{"saveoptions"}%<div class="patternTopicActions foswikiFormStep"><div class="patternActionButtons">%TMPL:P{"action_buttons"}%<div class="foswikiClear"></div></div></div>%TMPL:END%

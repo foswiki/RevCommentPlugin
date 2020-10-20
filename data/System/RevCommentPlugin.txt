@@ -1,8 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" date="1440893548" format="1.1"  version="1"}%
-<!--
-One line description, required for extensions repository catalog.
-   * Set SHORTDESCRIPTION = %$SHORTDESCRIPTION%
--->
+%META:TOPICINFO{author="ProjectContributor" date="1587989213" format="1.1" version="1"}%
 ---+!! <nop>%TOPIC%
 This plugin allows entry of a short summary of changes made to a topic for a new revision.
 This summary can be displayed e.g. in a history page of the topic or on the !WebChanges page
@@ -32,39 +28,26 @@ it will be saved in the topic.
 
 ---++ Examples
 
-   * %<nop>REVCOMMENT% shows the comments for the current revision.
+%<nop>REVCOMMENT% shows the comments for the current revision.
 
 if you have RevCommentPlugin enabled, you should see a comment here: %REVCOMMENT%
 
-   * Example search results: <br />
-     <img alt='ExampleWebChanges.png' height='236' src='%ATTACHURLPATH%/ExampleWebChanges.png' width='718' />
+<img alt='ExampleWebChanges.png' height='236' src='%ATTACHURLPATH%/ExampleWebChanges.png' width='718' />
 
----
 
-   * If you have also the [[Foswiki:Extensions.HistoryPlugin][HistoryPlugin]] installed,
-     the history of a topic may look like this:
+If you have also the [[Foswiki:Extensions.HistoryPlugin][HistoryPlugin]] installed,
+the history of a topic may look like this:
 
-   * Example History: <br />
-     <img alt='ExampleHistory.png' height='156' src='%ATTACHURLPATH%/ExampleHistory.png' width='646' />
+<img alt='ExampleHistory.png' height='156' src='%ATTACHURLPATH%/ExampleHistory.png' width='646' />
 
----++ Plugin Settings
+---++ Customization
 
-Plugin settings are stored as preferences variables. To reference a plugin setting write ==%<nop>&lt;plugin&gt;_&lt;setting&gt;%==, i.e. ==%<nop>REVCOMMENTPLUGIN_SHORTDESCRIPTION%==
-
-   * Debug plugin: (See output in =working/logs/debug.log=)
-      * Set DEBUG = 0
-
-   * List also new or updated attachments:
-      * Set ATTACHMENT_COMMENTS = 1
+---+++ Templates
 
 Note that this extension now ships with 4 templates, and requires a SKIN
 override to incorporate this extension.  Set the SKIN in %USERSWEB%.SitePreferences.
    * For a Foswiki 2.0 system, =Set SKIN = revcomment,natedit,pattern=
    * For a Foswiki 1.1 system, =Set SKIN = revcom11,pattern=
-
----++ Customization
-
----+++ Templates
 
 The comment input field and displayed comments are added via skin template overrides.
 
@@ -83,7 +66,15 @@ These templates add a textfield to the Editor interface: <verbatim>
 Most of the CSS used to display comments is already embedded in the PatternSkin =styles.css= and =colors.css=  A small amount of CSS is also
 contained in-line in the =oopshistory= template.
 
----++ Plugin Installation Instructions
+---++ Perl API
+
+Third plugins may register a revision comment using the =Foswiki::Plugins::RevCommentPlugin::setComment= api. See the PerlDoc for more.
+
+%IF{"context RevCommentPluginEnabled"
+  then="$percntINCLUDE{\"doc:Foswiki::Plugins::RevCommentPlugin\" level=\"3\"}$percnt"
+}%
+
+---++ Installation Instructions
 
 %$INSTALL_INSTRUCTIONS%
 
@@ -93,24 +84,33 @@ contained in-line in the =oopshistory= template.
       * If you have also the [[Foswiki:Extensions.HistoryPlugin][HistoryPlugin]] installed,
         view the history of the topic you just created. It should contain the comment.
 
----++ Plugin Info
-
-|  Plugin Author: | Foswiki:Main.KennethLavrsen & Foswiki:Main.SteffenPoulsen |
-|  Copyright &copy;: | 2006, !JChristophFuchs and !Steffen Poulsen; 2008-2015 Kenneth Lavrsen and Foswiki Contributors |
-|  License: | GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]]) |
-|  Change History: |  |
+---++ Change History
+%TABLE{columnwidths="7em" tablewidth="100%"}%
+|  20 Oct 2020 (3.00) | Michael Daum - rewrite: fix storage format while trying to be backwards compatible; \
+                        removed plugin settings - these are all in =configure= now; \
+                        improve tag handler; performance improvements by converting the plugin to an OO interface; \
+                        added public api to set the revision comment by other plugins |
 |  01 Sep 2015 (2.01) | Foswikitask:Item13657: Regex issues on perl 5.22 |
-|  15 Aug 2015 (2.00) | Foswikitask:Item11068: RevCommentplugin conflicts with CommentPlugin<br/>\
+|  15 Aug 2015 (2.00) | Foswikitask:Item11068: <nop>RevCommentPlugin conflicts with <nop>CommentPlugin<br/>\
                   Foswikitask:Item13619: Add compatibility for Foswiki 2.0<br/>\
                   Foswikitask:Item12880: Preserve rev-comment input across preview |
 |  11 Nov 2011  | Item11249 - added registerMETA |
 |  22 Jan 2009: | Kenneth Lavrsen - Added the two example images as attachments to the topic so they also get uploaded to foswiki.org. No need to upgrade from 08 Dec 2008 version if you already installed that. |
-|  08 Dec 2008: | Kenneth Lavrsen: Changed the author to myself. !JChristophFuchs is the original author but announced in 2006 that he no longer maintains this plugin. So now I officially take the task as maintainer. Plugin is changed to Foswiki namespace and tested and works under Foswiki 1.0.0. Policy is now feel free to modify but please do not break compatibility. |
+|  08 Dec 2008: | Kenneth Lavrsen - Changed the author to myself. !JChristophFuchs is the original author but announced in 2006 that he no longer maintains this plugin. So now I officially take the task as maintainer. Plugin is changed to Foswiki namespace and tested and works under Foswiki 1.0.0. Policy is now feel free to modify but please do not break compatibility. |
 |  14 Apr 2006: | &lt;noautolink&gt; added to default pre/post rendering output of REVCOMMENT tag |
 |  14 Apr 2006: | Minor update for Dakar 4.0.2 |
 |  22 Apr 2005: | Initial version |
-__Related Topics:__ %SYSTEMWEB%.DefaultPreferences, %USERSWEB%.SitePreferences, [[%SYSTEMWEB%.Plugins][Plugins]]
 
-%META:FILEATTACHMENT{name="ExampleHistory.png" attachment="ExampleHistory.png" attr="h" comment="" date="1440893548" size="15714" user="ProjectContributor" version="1"}%
-%META:FILEATTACHMENT{name="ExampleWebChanges.png" attachment="ExampleWebChanges.png" attr="h" comment="" date="1440893548" size="30666" user="ProjectContributor" version="1"}%
-%META:REVCOMMENT{comment_1="New version 2.0 of this extension." minor_1="" ncomments="1" rev_1="" t_1="1440555092"}%
+
+%META:FILEATTACHMENT{name="ExampleHistory.png" attr="h" comment="" date="1587989213" size="15714" user="ProjectContributor" version="1"}%
+%META:FILEATTACHMENT{name="ExampleWebChanges.png" attr="h" comment="" date="1587989213" size="30666" user="ProjectContributor" version="1"}%
+%META:FORM{name="PackageForm"}%
+%META:FIELD{name="Author" title="Author" value="Foswiki:Main.MichaelDaum, Foswiki:Main.KennethLavrsen, Foswiki:Main.SteffenPoulsen"}%
+%META:FIELD{name="Copyright" title="Copyright" value="2006, !JChristophFuchs and !Steffen Poulsen; 2008-2015 Kenneth Lavrsen; 2008-2020 Foswiki Contributors"}%
+%META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
+%META:FIELD{name="Home" title="Home" value="http://foswiki.org/Extensions/%TOPIC%"}%
+%META:FIELD{name="License" title="License" value="GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]])"}%
+%META:FIELD{name="Release" title="Release" value="%$RELEASE%"}%
+%META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/%TOPIC%"}%
+%META:FIELD{name="Support" title="Support" value="http://foswiki.org/Support/%TOPIC%"}%
+%META:FIELD{name="Version" title="Version" value="%$VERSION%"}%

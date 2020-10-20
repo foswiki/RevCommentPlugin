@@ -3,22 +3,23 @@
 ---+ REVCOMMENT -- Display the revision comments for a topic..
 %STARTSECTION{"revcomment_attributes"}%
 ---++ Parameters
-   * The following standard attributes are recognized
-%TABLE{sort="off"}%
+
 | *Name* | *Description* | *Default* |
-| web    | Web where topic exists  | current web  |
-| topic  | Name of topic           | current topic  |
-| rev    | Revision                | latest revision |
-| delimiter | Delimiter between 2 comments for the same revision | &lt;/li&gt;&lt;li&gt;  |  
-| pre    | Text before the first comment | &lt;ul&gt;&lt;li&gt;  |
-| post   | Text after the last comment | &lt;/li&gt;&lt;/ul&gt;  |
-| minor  | Text to print for a minor change | _(minor)_  |
-(The text for the _pre_ and _post_ parameters will only be printed if the list of comments is not empty.)
-   * For your convenience, you can use [] instead of {} and '' instead of " 
-     inside other parameters.
+| web    | web where topic exists  | current web  |
+| topic  | name of topic           | current topic  |
+| rev    | revision                | latest revision |
+| separator | delimiter between 2 comments for the same revision | =\n=  |  
+| header    | text before the first comment | =&lt;ul>=  |
+| format    | format string for each revision comment | =&lt;li> $comment $minor</li>=  |
+| footer   | text after the last comment | =&lt;/ul>=  |
+| minor  | text to print for a minor change | _(minor)_  |
+
+The text for the _pre_ and _post_ parameters will only be printed if the list of comments is not empty.
+
 %ENDSECTION{"revcomment_attributes"}%
 ---++ Examples
    * A =%<nop>REVCOMMENT%= without parameters shows the Revision comments for the latest topic revision.
 %STOPINCLUDE%
+
 ---++ Related
-RevCommentPlugin RevCommentHelp
+[[RevCommentPlugin]], [[RevCommentHelp]]
