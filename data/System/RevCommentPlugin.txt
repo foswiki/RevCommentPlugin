@@ -86,6 +86,7 @@ Third plugins may register a revision comment using the =Foswiki::Plugins::RevCo
 
 ---++ Change History
 %TABLE{columnwidths="7em" tablewidth="100%"}%
+|  20 Nov 2020 (3.10) | Michael Daum - fix oopshistory templates; added dependency on latest !HistoryPlugin |
 |  20 Oct 2020 (3.00) | Michael Daum - rewrite: fix storage format while trying to be backwards compatible; \
                         removed plugin settings - these are all in =configure= now; \
                         improve tag handler; performance improvements by converting the plugin to an OO interface; \

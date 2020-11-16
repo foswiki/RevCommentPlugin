@@ -32,8 +32,8 @@ use warnings;
 use Foswiki::Func    ();
 use Foswiki::Plugins ();
 
-our $VERSION = '3.00';
-our $RELEASE = '20 Oct 2020';
+our $VERSION = '3.10';
+our $RELEASE = '20 Nov 2020';
 our $SHORTDESCRIPTION =
   'Allows a short summary of changes to be entered for a new revision';
 our $NO_PREFS_IN_TOPIC = 1;

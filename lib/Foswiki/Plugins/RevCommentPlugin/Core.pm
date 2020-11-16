@@ -181,11 +181,14 @@ sub afterRenameHandler {
 
 # =========================
 sub handleRevComment {
-    my ( $this, $params, $topic, $web, $meta ) = @_;
+    my ( $this, $params, $topic, $web ) = @_;
 
     ( $web, $topic ) =
       Foswiki::Func::normalizeWebTopicName( $params->{web} || $web,
         $params->{topic} || $topic );
+
+    my ($meta) = Foswiki::Func::readTopic( $web, $topic );
+    my $info = $meta->getRevisionInfo();
 
     my $wikiName = Foswiki::Func::getWikiName();
     return _inlineError("topic does not exist")
@@ -193,8 +196,6 @@ sub handleRevComment {
     return _inlineError("access denied")
       unless Foswiki::Func::checkAccessPermission( "VIEW", $wikiName, undef,
         $topic, $web, $meta );
-
-    my $info = $meta->getRevisionInfo();
 
     my $header    = $params->{header}    // $params->{pre}       // '';
     my $separator = $params->{separator} // $params->{delimiter} // '';
