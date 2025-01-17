@@ -1,0 +1,58 @@
+# Foswiki translation for Polish
+# Translators:
+#   Foswiki:Main/ZbigniewKulesza, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: Foswiki $Id\n"
+"Report-Msgid-Bugs-To: foswiki-svn@lists.sourceforge.net\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2010-09-02 07:47+0000\n"
+"Last-Translator: Daniel Kownacki <d.kownacki@gmail.com>\n"
+"Language-Team: Polish <kuleszbi@@pb.bialystok.pl>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Pootle 1.1.0\n"
+
+#: templates/oopshistory.revcom11.tmpl:7
+#: templates/oopshistory.revcomment.tmpl:5
+#, fuzzy
+msgid "Changed on"
+msgstr "Zmienione"
+
+#: templates/oopshistory.revcom11.tmpl:9
+#: templates/oopshistory.revcomment.tmpl:7
+msgid "Comment"
+msgstr "Komentarz"
+
+#: templates/oopshistory.revcom11.tmpl:8
+#: templates/oopshistory.revcomment.tmpl:6
+#, fuzzy
+msgid "Last edited by"
+msgstr "użytkownika, który dokonał ostatniej zmiany"
+
+#: templates/oopshistory.revcom11.tmpl:6
+#: templates/oopshistory.revcomment.tmpl:4
+msgid "Revision"
+msgstr "Zmiana"
+
+#: templates/edit.revcom11.tmpl:4 templates/edit.revcomment.tmpl:5
+#, fuzzy
+msgid "Summary of changes"
+msgstr "Zatwierdź zmiany"
+
+#: templates/oopshistory.revcom11.tmpl:4
+#, fuzzy
+msgid "Topic history"
+msgstr "Wyświetl historię strony"
+
+#: templates/search.revcomment.tmpl:9
+msgid "by %1 "
+msgstr ""
+
+#: templates/edit.revcom11.tmpl:6 templates/edit.revcomment.tmpl:6
+msgid "help"
+msgstr "pomoc"

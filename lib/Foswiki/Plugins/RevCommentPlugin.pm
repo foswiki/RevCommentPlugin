@@ -1,7 +1,7 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
 # Copyright (C) 2005 by TWiki:Main.JChristophFuchs
-# Copyright (C) 2008-2020 Foswiki Contributors
+# Copyright (C) 2008-2025 Foswiki Contributors
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -32,8 +32,8 @@ use warnings;
 use Foswiki::Func    ();
 use Foswiki::Plugins ();
 
-our $VERSION = '3.10';
-our $RELEASE = '20 Nov 2020';
+our $VERSION = '3.11';
+our $RELEASE = '%$RELEASE%';
 our $SHORTDESCRIPTION =
   'Allows a short summary of changes to be entered for a new revision';
 our $NO_PREFS_IN_TOPIC = 1;

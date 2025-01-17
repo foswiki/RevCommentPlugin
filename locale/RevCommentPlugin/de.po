@@ -1,0 +1,53 @@
+# Foswiki translation for Deutsch
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Foswiki $Id\n"
+"Report-Msgid-Bugs-To: foswiki-svn@lists.sourceforge.net\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2016-02-25 16:35+0200\n"
+"Last-Translator: Michael Daum <foswiki@michaeldaumconsulting.com>\n"
+"Language-Team: German <http://translate.foswiki.org/projects/foswiki/"
+"distribution-master/de/>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.4\n"
+
+#: templates/oopshistory.revcom11.tmpl:7
+#: templates/oopshistory.revcomment.tmpl:5
+msgid "Changed on"
+msgstr "Geändert am"
+
+#: templates/oopshistory.revcom11.tmpl:9
+#: templates/oopshistory.revcomment.tmpl:7
+msgid "Comment"
+msgstr "Kommentar"
+
+#: templates/oopshistory.revcom11.tmpl:8
+#: templates/oopshistory.revcomment.tmpl:6
+msgid "Last edited by"
+msgstr "Zuletzt bearbeitet von"
+
+#: templates/oopshistory.revcom11.tmpl:6
+#: templates/oopshistory.revcomment.tmpl:4
+msgid "Revision"
+msgstr "Version"
+
+#: templates/edit.revcom11.tmpl:4 templates/edit.revcomment.tmpl:5
+msgid "Summary of changes"
+msgstr "Zusammenfassung der Änderungen"
+
+#: templates/oopshistory.revcom11.tmpl:4
+msgid "Topic history"
+msgstr "Topic-Historie"
+
+#: templates/search.revcomment.tmpl:9
+msgid "by %1 "
+msgstr "von %1 "
+
+#: templates/edit.revcom11.tmpl:6 templates/edit.revcomment.tmpl:6
+msgid "help"
+msgstr "Hilfe"

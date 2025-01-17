@@ -1,0 +1,58 @@
+# Foswiki translation for Brazilian Portuguese (português brasileiro)
+# Translators:
+# translation of pt-br.po to português brasileiro
+#   Foswiki:Main/AntonioTerceiro, 2007, 2008.
+#   Foswiki:Main/CarlinhosCecconi, 2007, 2008, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: pt\n"
+"Report-Msgid-Bugs-To: foswiki-svn@lists.sourceforge.net\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2016-09-05 05:25+0200\n"
+"Last-Translator: Carlinhos  Cecconi <carlinux@terra.com.br>\n"
+"Language-Team: Portuguese (Brazil) <http://translate.foswiki.org/projects/"
+"foswiki/distribution-master/pt_BR/>\n"
+"Language: pt-br\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 2.4\n"
+
+#: templates/oopshistory.revcom11.tmpl:7
+#: templates/oopshistory.revcomment.tmpl:5
+msgid "Changed on"
+msgstr "Alterado em"
+
+#: templates/oopshistory.revcom11.tmpl:9
+#: templates/oopshistory.revcomment.tmpl:7
+msgid "Comment"
+msgstr "Comentário"
+
+#: templates/oopshistory.revcom11.tmpl:8
+#: templates/oopshistory.revcomment.tmpl:6
+msgid "Last edited by"
+msgstr "Última edição por"
+
+#: templates/oopshistory.revcom11.tmpl:6
+#: templates/oopshistory.revcomment.tmpl:4
+msgid "Revision"
+msgstr "Versão"
+
+#: templates/edit.revcom11.tmpl:4 templates/edit.revcomment.tmpl:5
+#, fuzzy
+msgid "Summary of changes"
+msgstr "Sem alterações"
+
+#: templates/oopshistory.revcom11.tmpl:4
+#, fuzzy
+msgid "Topic history"
+msgstr "Nome do tópico"
+
+#: templates/search.revcomment.tmpl:9
+msgid "by %1 "
+msgstr "por %1 "
+
+#: templates/edit.revcom11.tmpl:6 templates/edit.revcomment.tmpl:6
+msgid "help"
+msgstr "ajuda"

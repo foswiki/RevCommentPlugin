@@ -1,0 +1,58 @@
+# Foswiki translation for finnish
+# Translators:
+#   Heikki Toivonen <heikki@osafoundation.org>
+#   Tapio Salonsaari <take@nerd.fi> 2009
+msgid ""
+msgstr ""
+"Project-Id-Version: Foswiki $Id\n"
+"Report-Msgid-Bugs-To: foswiki-svn@lists.sourceforge.net\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2010-07-15 14:07+0200\n"
+"Last-Translator: ghfg <sdfsd@gmail.com>\n"
+"Language-Team: FINNISH <heikki@osafoundation.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Finnish\n"
+
+#: templates/oopshistory.revcom11.tmpl:7
+#: templates/oopshistory.revcomment.tmpl:5
+#, fuzzy
+msgid "Changed on"
+msgstr "Muutettu"
+
+#: templates/oopshistory.revcom11.tmpl:9
+#: templates/oopshistory.revcomment.tmpl:7
+msgid "Comment"
+msgstr "Kommentti"
+
+#: templates/oopshistory.revcom11.tmpl:8
+#: templates/oopshistory.revcomment.tmpl:6
+#, fuzzy
+msgid "Last edited by"
+msgstr "Viimeisin muokkaaja"
+
+#: templates/oopshistory.revcom11.tmpl:6
+#: templates/oopshistory.revcomment.tmpl:4
+msgid "Revision"
+msgstr "Versio"
+
+#: templates/edit.revcom11.tmpl:4 templates/edit.revcomment.tmpl:5
+#, fuzzy
+msgid "Summary of changes"
+msgstr "(muutokset)"
+
+#: templates/oopshistory.revcom11.tmpl:4
+#, fuzzy
+msgid "Topic history"
+msgstr "Aiheen otsikko"
+
+#: templates/search.revcomment.tmpl:9
+msgid "by %1 "
+msgstr ""
+
+#: templates/edit.revcom11.tmpl:6 templates/edit.revcomment.tmpl:6
+msgid "help"
+msgstr "ohje"
+

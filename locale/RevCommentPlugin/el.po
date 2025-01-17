@@ -1,0 +1,59 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Foswiki Greek Translation\n"
+"Report-Msgid-Bugs-To: foswiki-svn@lists.sourceforge.net\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2015-06-30 14:03+0200\n"
+"Last-Translator: Lieven L. Litaer <qephom@gmx.de>\n"
+"Language-Team: Greek <http://translate.foswiki.org/projects/foswiki/"
+"distribution-master/el/>\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.1\n"
+"X-Poedit-Language: Greek\n"
+"X-Poedit-Country: GREECE\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: templates/oopshistory.revcom11.tmpl:7
+#: templates/oopshistory.revcomment.tmpl:5
+#, fuzzy
+msgid "Changed on"
+msgstr "Τροποποιήθηκε"
+
+#: templates/oopshistory.revcom11.tmpl:9
+#: templates/oopshistory.revcomment.tmpl:7
+msgid "Comment"
+msgstr "Σχόλιο"
+
+#: templates/oopshistory.revcom11.tmpl:8
+#: templates/oopshistory.revcomment.tmpl:6
+#, fuzzy
+msgid "Last edited by"
+msgstr "Τελευταίος συντάκτης"
+
+#: templates/oopshistory.revcom11.tmpl:6
+#: templates/oopshistory.revcomment.tmpl:4
+msgid "Revision"
+msgstr "Αναθεώρηση"
+
+#: templates/edit.revcom11.tmpl:4 templates/edit.revcomment.tmpl:5
+#, fuzzy
+msgid "Summary of changes"
+msgstr "(αλλαγές)"
+
+#: templates/oopshistory.revcom11.tmpl:4
+#, fuzzy
+msgid "Topic history"
+msgstr "Προβολή ιστορικού θέματος"
+
+#: templates/search.revcomment.tmpl:9
+msgid "by %1 "
+msgstr ""
+
+#: templates/edit.revcom11.tmpl:6 templates/edit.revcomment.tmpl:6
+msgid "help"
+msgstr "βοήθεια"
+

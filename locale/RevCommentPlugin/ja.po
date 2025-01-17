@@ -1,0 +1,60 @@
+# Foswiki translation for Japanese
+# Translators:
+#   Foswiki:Main/KenYuminaga, 2008
+msgid ""
+msgstr ""
+"Project-Id-Version: Foswiki $Id\n"
+"Report-Msgid-Bugs-To: foswiki-svn@lists.sourceforge.net\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2010-09-13 04:19+0000\n"
+"Last-Translator: Joel DeJesus <dejesus.joel@gmail.com>\n"
+"Language-Team: Foswiki Japanese team\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 1.1.0\n"
+"X-Poedit-Country: JAPAN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: templates/oopshistory.revcom11.tmpl:7
+#: templates/oopshistory.revcomment.tmpl:5
+#, fuzzy
+msgid "Changed on"
+msgstr "変更しました"
+
+#: templates/oopshistory.revcom11.tmpl:9
+#: templates/oopshistory.revcomment.tmpl:7
+msgid "Comment"
+msgstr "コメント"
+
+#: templates/oopshistory.revcom11.tmpl:8
+#: templates/oopshistory.revcomment.tmpl:6
+#, fuzzy
+msgid "Last edited by"
+msgstr "最新編集者"
+
+#: templates/oopshistory.revcom11.tmpl:6
+#: templates/oopshistory.revcomment.tmpl:4
+msgid "Revision"
+msgstr "改訂"
+
+#: templates/edit.revcom11.tmpl:4 templates/edit.revcomment.tmpl:5
+#, fuzzy
+msgid "Summary of changes"
+msgstr "変更を保存します"
+
+#: templates/oopshistory.revcom11.tmpl:4
+#, fuzzy
+msgid "Topic history"
+msgstr "トピック履歴を確認します"
+
+#: templates/search.revcomment.tmpl:9
+msgid "by %1 "
+msgstr ""
+
+#: templates/edit.revcom11.tmpl:6 templates/edit.revcomment.tmpl:6
+msgid "help"
+msgstr "ヘルプ"
+
